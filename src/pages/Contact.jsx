@@ -1,9 +1,9 @@
-import { useOutletContext } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { MapPin, Phone, Mail, Clock, Send, MessageSquare } from 'lucide-react';
+import { useOutletContext } from "react-router-dom";
+import { motion } from "framer-motion";
+import { MapPin, Phone, Mail, Clock, Send, MessageSquare } from "lucide-react";
 
 export default function Contact() {
-  const { lang } = useOutletContext(); 
+  const { lang } = useOutletContext();
 
   // --- 1. Translations ---
   const content = {
@@ -20,12 +20,12 @@ export default function Contact() {
         firstName: "Ismingiz",
         lastName: "Familiyangiz",
         msg: "Xabaringiz",
-        btn: "Xabarni Yuborish"
+        btn: "Xabarni Yuborish",
       },
       data: {
         address: "Amir Temur ko'chasi 108, Toshkent",
-        hours: "Dushanba - Yakshanba: 08:00 - 22:00"
-      }
+        hours: "Dushanba - Yakshanba: 08:00 - 22:00",
+      },
     },
     en: {
       title: "Get in Touch",
@@ -40,12 +40,12 @@ export default function Contact() {
         firstName: "First Name",
         lastName: "Last Name",
         msg: "Your Message",
-        btn: "Send Message"
+        btn: "Send Message",
       },
       data: {
         address: "108 Amir Temur Avenue, Tashkent",
-        hours: "Monday - Sunday: 08:00 - 22:00"
-      }
+        hours: "Monday - Sunday: 08:00 - 22:00",
+      },
     },
     ru: {
       title: "Свяжитесь с Нами",
@@ -60,13 +60,13 @@ export default function Contact() {
         firstName: "Имя",
         lastName: "Фамилия",
         msg: "Ваше Сообщение",
-        btn: "Отправить"
+        btn: "Отправить",
       },
       data: {
         address: "Проспект Амира Темура 108, Ташкент",
-        hours: "Понедельник - Воскресенье: 08:00 - 22:00"
-      }
-    }
+        hours: "Понедельник - Воскресенье: 08:00 - 22:00",
+      },
+    },
   };
 
   const t = content[lang] || content.en;
@@ -74,25 +74,23 @@ export default function Contact() {
   // Animation Config
   const fadeInUp = {
     hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
   };
 
   return (
     <div className="relative min-h-screen bg-slate-50 dark:bg-slate-900 pt-32 pb-20 px-4 overflow-hidden transition-colors duration-300">
-      
       {/* Background Blobs (Like Services Page) */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-teal-200/20 dark:bg-teal-900/10 rounded-full blur-[120px] -z-10 animate-pulse"></div>
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-200/20 dark:bg-blue-900/10 rounded-full blur-[100px] -z-10"></div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        
         {/* --- Header --- */}
         <div className="text-center mb-16">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={fadeInUp}
-          >
+          <motion.div initial="hidden" animate="visible" variants={fadeInUp}>
             <span className="inline-block py-1 px-3 rounded-full bg-teal-100 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400 text-sm font-bold uppercase tracking-wider mb-4">
               {t.labels.phone} / {t.labels.email}
             </span>
@@ -106,23 +104,24 @@ export default function Contact() {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">
-          
           {/* --- Left Column: Info Cards --- */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="space-y-6"
           >
             {/* Location Card */}
-            <div className="group bg-white dark:bg-slate-800 p-8 rounded-[2rem] shadow-lg hover:shadow-xl transition-all border border-slate-100 dark:border-slate-700/50 flex items-start gap-5">
-              <div className="w-14 h-14 rounded-2xl bg-red-100 dark:bg-red-900/20 text-red-600 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                <MapPin size={28} />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{t.labels.address}</h3>
-                <p className="text-slate-600 dark:text-slate-400 leading-relaxed">{t.data.address}</p>
-              </div>
+            <div className="h-[400px] w-full bg-slate-200 dark:bg-slate-700 rounded-[2rem] overflow-hidden shadow-xl border-4 border-white dark:border-slate-600">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2996.363821033282!2d69.2435773154236!3d41.32101697927011!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8b5bd4ea3e5f%3A0x6e268f70020286f7!2sAmir%20Temur%20Square!5e0!3m2!1sen!2s!4v1645000000000!5m2!1sen!2s"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
             </div>
 
             {/* Phone & Email Grid */}
@@ -131,16 +130,24 @@ export default function Contact() {
                 <div className="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900/20 text-blue-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <Phone size={24} />
                 </div>
-                <h4 className="font-bold text-slate-900 dark:text-white mb-1">{t.labels.phone}</h4>
-                <p className="text-slate-600 dark:text-slate-400 text-sm">+998 71 200-00-00</p>
+                <h4 className="font-bold text-slate-900 dark:text-white mb-1">
+                  {t.labels.phone}
+                </h4>
+                <p className="text-slate-600 dark:text-slate-400 text-sm">
+                  +998 71 200-00-00
+                </p>
               </div>
 
               <div className="group bg-white dark:bg-slate-800 p-8 rounded-[2rem] shadow-lg hover:shadow-xl transition-all border border-slate-100 dark:border-slate-700/50">
                 <div className="w-12 h-12 rounded-xl bg-purple-100 dark:bg-purple-900/20 text-purple-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <Mail size={24} />
                 </div>
-                <h4 className="font-bold text-slate-900 dark:text-white mb-1">{t.labels.email}</h4>
-                <p className="text-slate-600 dark:text-slate-400 text-sm">info@healthplus.uz</p>
+                <h4 className="font-bold text-slate-900 dark:text-white mb-1">
+                  {t.labels.email}
+                </h4>
+                <p className="text-slate-600 dark:text-slate-400 text-sm">
+                  info@healthplus.uz
+                </p>
               </div>
             </div>
 
@@ -164,7 +171,7 @@ export default function Contact() {
           </motion.div>
 
           {/* --- Right Column: Form --- */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -184,32 +191,32 @@ export default function Contact() {
                   <label className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide ml-1">
                     {t.labels.firstName}
                   </label>
-                  <input 
-                    type="text" 
-                    className="w-full px-5 py-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:ring-4 focus:ring-teal-500/20 focus:border-teal-500 outline-none transition-all font-medium" 
-                    placeholder="Ali" 
+                  <input
+                    type="text"
+                    className="w-full px-5 py-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:ring-4 focus:ring-teal-500/20 focus:border-teal-500 outline-none transition-all font-medium"
+                    placeholder="Ali"
                   />
                 </div>
                 <div className="space-y-2">
                   <label className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide ml-1">
                     {t.labels.lastName}
                   </label>
-                  <input 
-                    type="text" 
-                    className="w-full px-5 py-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:ring-4 focus:ring-teal-500/20 focus:border-teal-500 outline-none transition-all font-medium" 
-                    placeholder="Valiyev" 
+                  <input
+                    type="text"
+                    className="w-full px-5 py-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:ring-4 focus:ring-teal-500/20 focus:border-teal-500 outline-none transition-all font-medium"
+                    placeholder="Valiyev"
                   />
                 </div>
               </div>
-              
+
               <div className="space-y-2">
                 <label className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide ml-1">
                   {t.labels.email}
                 </label>
-                <input 
-                  type="email" 
-                  className="w-full px-5 py-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:ring-4 focus:ring-teal-500/20 focus:border-teal-500 outline-none transition-all font-medium" 
-                  placeholder="ali@example.com" 
+                <input
+                  type="email"
+                  className="w-full px-5 py-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:ring-4 focus:ring-teal-500/20 focus:border-teal-500 outline-none transition-all font-medium"
+                  placeholder="ali@example.com"
                 />
               </div>
 
@@ -217,19 +224,21 @@ export default function Contact() {
                 <label className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide ml-1">
                   {t.labels.msg}
                 </label>
-                <textarea 
-                  className="w-full px-5 py-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:ring-4 focus:ring-teal-500/20 focus:border-teal-500 outline-none transition-all font-medium h-32 resize-none" 
+                <textarea
+                  className="w-full px-5 py-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:ring-4 focus:ring-teal-500/20 focus:border-teal-500 outline-none transition-all font-medium h-32 resize-none"
                   placeholder="..."
                 ></textarea>
               </div>
 
               <button className="group w-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold py-4 rounded-xl hover:shadow-lg hover:shadow-teal-500/20 transition-all flex items-center justify-center gap-2">
                 <span>{t.labels.btn}</span>
-                <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                <Send
+                  size={18}
+                  className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
+                />
               </button>
             </form>
           </motion.div>
-
         </div>
       </div>
     </div>
