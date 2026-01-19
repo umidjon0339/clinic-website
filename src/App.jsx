@@ -1,4 +1,4 @@
-import { HashRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // --- Layouts ---
 import Layout from './components/Layout';
@@ -15,7 +15,7 @@ import NotFound from './pages/NotFound'; // 404 Page
 
 function App() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <Routes>
         {/* Parent Route: Layout (Contains Navbar & Footer) */}
         <Route path="/" element={<Layout />}>
@@ -37,7 +37,7 @@ function App() {
           
         </Route>
       </Routes>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 

@@ -2,7 +2,7 @@
   "name": "clinic-website",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://umidjon0339.github.io/clinic-website",
+  
   "type": "module",
   "scripts": {
     "dev": "vite",
